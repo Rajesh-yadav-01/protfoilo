@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            color: #222;
+            min-height: 100vh;
+        }
+        nav {
+            background: #2d5c88;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 28px;
+            font-size: 1.1em;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            background: #fff;
+            color: #2d5c88;
+            border-radius: 8px 8px 0 0;
+        }
+        section {
+            margin: 40px auto;
+            padding: 32px 24px;
+            border-radius: 16px;
+            max-width: 700px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            background: rgba(255,255,255,0.96);
+            scroll-margin-top: 80px;
+        }
+        #home {
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            text-align: center;
+        }
+        #about {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+        #skills {
+            background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+        }
+        #projects {
+            background: linear-gradient(120deg, #fad0c4 0%, #ffd1ff 100%);
+        }
+        #contact {
+            background: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+        }
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+        }
+        h1, h2 {
+            margin-top: 0;
+            color: #2d5c88;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .skills-list li {
+            background: #2d5c88;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 1em;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+        }
+        .project {
+            margin-bottom: 18px;
+            padding: 14px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+        }
+        .project a {
+            color: #0078d4;
+            text-decoration: underline;
+        }
+        .contact a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        @media (max-width: 700px) {
+            section {
+                padding: 16px 6px;
+            }
+            .profile-img {
+                width: 90px;
+                height: 90px;
+            }
+            nav a {
+                padding: 12px 10px;
+                font-size: 1em;
+            }
+        }
+    </style>
+    <script>
+        // Highlight active nav link on scroll
+        window.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 90;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="home">
+        <img src="D:\vs\html basixs\img\rajeshprofile.jpg" alt="Profile" class="profile-img">
+        <h1>RAJESH P G</h1>
+        <p><em>Web Developer | Designer | Your Role</em></p>
+    </section>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a passionate web developer with experience in building modern, responsive websites and web applications. I love turning ideas into reality using code and design.
+        </p>
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Git & GitHub</li>
+        </ul>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>simple tudu</h3>
+                <p>It is a basic and simple todo project using HTML and CSS.</p>
+                <a href="https://rajesh-yadav-01.github.io/tudu/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>BMI calculator</h3>
+                <p>it is the simple bmi calculator</p>
+                <a href="https://rajesh-yadav-01.github.io/bmi/" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+    <style>
+        .projects-grid {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(45,92,136,0.10);
+            padding: 24px 20px;
+            max-width: 320px;
+            flex: 1 1 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .project-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 6px 24px rgba(45,92,136,0.16);
+        }
+        .project-card h3 {
+            margin: 0 0 10px 0;
+            color: #2d5c88;
+            font-size: 1.2em;
+        }
+        .project-card p {
+            flex: 1;
+            margin: 0 0 16px 0;
+            color: #444;
+        }
+        .project-card a {
+            color: #fff;
+            background: #2d5c88;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .project-card a:hover {
+            background: #1b3a57;
+        }
+        @media (max-width: 700px) {
+            .projects-grid {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .project-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>
+            Email: <a href="#">rajesh181106.pg@gmail.com</a><br>
+            LinkedIn: <a href="https://www.linkedin.com/in/rajesh-pg-68860534a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">My LinkedIn</a>
+        </p>
+    </section>
+</body>
+</html>
